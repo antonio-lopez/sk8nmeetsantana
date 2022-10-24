@@ -1,3 +1,28 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "airbnb",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "next"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "prettier"],
+  "rules": {
+    // suppress errors for missing 'import React' in files
+    "react/react-in-jsx-scope": ["off"],
+    // gives warning if spread props getting passed to component ex. (...props)
+    "react/jsx-props-no-spreading": ["off"],
+    // suppress errors for Function component is not a function declaration turning off allows us to use arrow functions
+    "react/function-component-definition": ["off"]
+  }
 }
