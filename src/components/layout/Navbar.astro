@@ -1,0 +1,137 @@
+---
+import Icon from "../ui/icon.astro";
+import Image from "../ui/image.astro";
+import type { NavbarLink, NavbarLinksWithSubLinks } from "../../lib/interfaces";
+
+const linksWithNoSublinks: Array<NavbarLink> = [
+  {
+    id: 0,
+    route: "/",
+    routeName: "Home",
+  },
+  {
+    id: 1,
+    route: "/contact",
+    routeName: "Contact",
+  },
+];
+
+const linksWithSublinks: NavbarLinksWithSubLinks = [
+  {
+    id: 0,
+    route: "/about",
+    routeName: "About",
+    subLinks: [
+      {
+        id: 0,
+        route: "/about",
+        routeName: "About Us",
+      },
+      {
+        id: 1,
+        route: "/mission",
+        routeName: "Mission",
+      },
+    ],
+  },
+  {
+    id: 1,
+    route: "/current-events",
+    routeName: "Events",
+    subLinks: [
+      {
+        id: 0,
+        route: "/current-events",
+        routeName: "Current",
+      },
+      {
+        id: 1,
+        route: "/past-events",
+        routeName: "Past",
+      },
+    ],
+  },
+];
+---
+
+<nav class="h-20 bg-[#16161a]">
+  <div class="layout flex h-full items-center justify-between">
+    <a href="/">
+      <Image
+        smallImg="https://res.cloudinary.com/dzhengjen/image/upload/v1705266116/assets/logos/Sk8_n_meet-_Santa_Ana_log_text_only_white_sm-300w_yxuxy7.webp"
+        largeImg="https://res.cloudinary.com/dzhengjen/image/upload/v1705266116/assets/logos/Sk8_n_meet-_Santa_Ana_log_text_only_white_sm-300w_yxuxy7.webp"
+        alt="sk8nmeet santana logo"
+        height="64"
+        width="120"
+        loading="eager"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      />
+    </a>
+
+    <!-- page links -->
+    <div class="hidden items-center space-x-10 lg:flex">
+      <div>
+        <ul class="flex space-x-4">
+          <li>
+            <a
+              class="hover:text-yellowGreen"
+              href={linksWithNoSublinks[0].route}
+            >
+              {linksWithNoSublinks[0].routeName}
+            </a>
+          </li>
+
+          {
+            linksWithSublinks.map((link) => {
+              return (
+                <li class="group">
+                  <a class="hover:text-primary" href={link.route}>
+                    {link.routeName}
+                  </a>
+                  <ul class="absolute top-12 z-50 hidden h-20 space-y-2 rounded-md bg-[#212121] px-3 pt-2 group-hover:block">
+                    {link.subLinks?.map((sublink) => (
+                      <li class="hover:text-primary">
+                        <a href={sublink.route}>{sublink.routeName}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </div>
+
+      <!-- social links -->
+      <div class="flex h-full items-center justify-center space-x-4">
+        <a
+          href="https://www.instagram.com/sk8_n_meet_santana/?igshid=YmMyMTA2M2Y%3D"
+          aria-label="instagram profile link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-primary"
+        >
+          <Icon icon="instagram" />
+        </a>
+        <a
+          href="https://www.tiktok.com/@sk8_n_meet_santana"
+          aria-label="tiktok profile link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-primary"
+        >
+          <Icon icon="tiktok" />
+        </a>
+        <a
+          href="https://open.spotify.com/user/31ryffk7oynp2rjj5zf6zj7taj7u?si=3044d10a38b24ef8"
+          aria-label="spotify profile link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-primary"
+        >
+          <Icon icon="spotify" />
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>

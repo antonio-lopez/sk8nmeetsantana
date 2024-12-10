@@ -1,0 +1,29 @@
+---
+import type { SanityDocument } from "@sanity/client";
+import { loadQuery } from "../../sanity/lib/load-query";
+
+export async function getStaticPaths() {
+  const { data: meetup } = await loadQuery<SanityDocument[]>({
+    query: "*[_type == 'meetup']",
+  });
+
+  return meetup.map(({ slug }) => {
+    return {
+      params: {
+        slug: slug.current,
+      },
+    };
+  });
+}
+
+const { params } = Astro;
+
+const { data: meetup } = await loadQuery({
+  query: "*[_type == 'meetup' && slug.current == $slug][0]",
+  params,
+});
+
+console.log(meetup);
+---
+
+<h1>A post about {meetup.title}</h1>

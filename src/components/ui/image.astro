@@ -1,0 +1,32 @@
+---
+interface ImageProps {
+  largeImg: string;
+  smallImg: string;
+  height: string;
+  width: string;
+  sizes: string;
+  loading: "eager" | "lazy" | undefined;
+  alt: string;
+  className?: string;
+}
+
+const { largeImg, smallImg, sizes, height, width, loading, alt, className } =
+  Astro.props;
+---
+
+<picture>
+  <source
+    type="image/webp"
+    srcset={`${smallImg} 600w, ${largeImg} 1000w`}
+    sizes={sizes}
+  />
+
+  <img
+    src={smallImg}
+    loading={loading}
+    height={height}
+    width={width}
+    alt={alt}
+    class={className}
+  />
+</picture>

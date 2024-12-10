@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 336 50% 90%;
+    --card-foreground: 336 5% 10%;
+    --popover: 336 100% 95%;
+    --popover-foreground: 336 100% 0%;
+    --primary: 76.29 63.18% 53.14%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 335.65 74.19% 81.76%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 298 30% 85%;
+    --muted-foreground: 336 5% 35%;
+    --accent: 76.29 63.18% 53.14%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 100% 30%;
+    --destructive-foreground: 336 5% 90%;
+    --border: 336 30% 50%;
+    --input: 336 30% 18%;
+    --ring: 336 74.2% 81.8%;
+    --radius: 0.5rem;
+  }
+}
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    font-family: "Poppins", sans-serif;
+    @apply bg-background text-foreground;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  h1,
+  h2,
+  a {
+    font-family: "Erica One";
+  }
+  .layout {
+    max-width: 80rem;
+    @apply mx-auto w-11/12;
+  }
+}
