@@ -1,6 +1,7 @@
 ---
 import type { SanityDocument } from "@sanity/client";
 import { loadQuery } from "../../sanity/lib/load-query";
+import { type IMeetup } from "@/lib/interfaces";
 
 export async function getStaticPaths() {
   const { data: meetup } = await loadQuery<SanityDocument[]>({
@@ -23,7 +24,9 @@ const { data: meetup } = await loadQuery({
   params,
 });
 
-console.log(meetup);
+
+
+// console.log(meetup);
 ---
 
-<h1>A post about {meetup.title}</h1>
+<h1>A post about</h1>
