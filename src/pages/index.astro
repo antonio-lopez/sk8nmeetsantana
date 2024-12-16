@@ -1,23 +1,24 @@
 ---
 import "@/styles/globals.css";
 import Layout from "../layouts/Layout.astro";
-import { Button } from "@/components/ui/button";
-import { loadQuery } from "@/sanity/lib/load-query";
-import { type IMeetup } from "@/lib/interfaces";
-import Image from "../components/ui/image.astro"
+import Hero from "../components/home/Hero.astro"
+// import { loadQuery } from "@/sanity/lib/load-query";
+// import { type IMeetup } from "@/lib/interfaces";
+// import TypographyH1 from "@/components/ui/TypographyH1.astro";
+// import Image from "../components/ui/image.astro"
 
-const { data: meetup } = await loadQuery<IMeetup[]>({
-  query: "*[_type == 'meetup'] | order(meetupDate desc){_id, title, image, slug} [0..3]",
-});
+// const { data: meetup } = await loadQuery<IMeetup[]>({
+//   query: "*[_type == 'meetup'] | order(meetupDate desc){_id, title, image, slug} [0..3]",
+// });
 
 ---
 
 <Layout title="Welcome to Astro.">
-  <main>
-    <h1 class="text-2xl font-bold">{meetup[1].title}</h1>
-    <Button>Hello World</Button>
-    <Button variant={"secondary"}>Hello World</Button>
-    {meetup.map((meet: IMeetup) => (
+  <main class="layout">
+    <Hero />
+  
+    
+    <!-- {meetup.map((meet: IMeetup) => (
       <div class='md:w-[24rem] md:h-[24rem] w-full h-full'>
         <Image 
       smallImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/v${meet.image.version}/${meet.image.public_id}.webp`}
@@ -30,6 +31,6 @@ const { data: meetup } = await loadQuery<IMeetup[]>({
         sizes='(max-width: 200px) 100vw, 45vw'  
         />
       </div>
-      ))}
+      ))} -->
   </main>
 </Layout>

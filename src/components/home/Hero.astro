@@ -1,0 +1,23 @@
+---
+import Image from "../ui/Image.astro"
+import TypographyH1 from "../ui/TypographyH1.astro"
+import Gallery from "../home/Gallery.astro"
+---
+
+<section class="py-10">
+    <TypographyH1 title="Find your sk8 community here..."/>
+    <div class='grid grid-cols-1 grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 lg:gap-4 gap-8'>
+      <Gallery />
+      <div class='flex justify-center items-center lg:p-14'>
+        <Image
+          smallImg='https://res.cloudinary.com/dzhengjen/image/upload/v1705266117/assets/logos/Sk8_n_meet-_Santa_Ana_logo-600w_boanp2.webp'
+          largeImg='https://res.cloudinary.com/dzhengjen/image/upload/v1705266117/assets/logos/Sk8_n_meet-_Santa_Ana_logo-1000w_izfthq.webp'
+          alt='sk8nmeet santana main logo'
+          height='300'
+          width='600'
+          loading='eager'
+          sizes='(max-width: 768px) 100vw,(max-width: 1200px) 50vw, 33vw'
+        />
+      </div>
+    </div>
+  </section>
