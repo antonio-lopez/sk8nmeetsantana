@@ -1,7 +1,7 @@
 ---
 import "@/styles/globals.css";
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/home/Hero.astro"
+import Hero from "../components/home/Hero.astro";
 import RecentFlyers from "@/components/home/RecentFlyers.astro";
 import Summary from "@/components/home/Summary.astro";
 import Highlights from "@/components/home/Highlights.astro";
@@ -9,15 +9,15 @@ import { loadQuery } from "@/sanity/lib/load-query";
 import { type IMeetup } from "@/lib/interfaces";
 
 const { data: meetups } = await loadQuery<IMeetup[]>({
-  query: "*[_type == 'meetup'] | order(meetupDate desc){_id, title, image, slug} [0..3]",
+  query:
+    "*[_type == 'meetup'] | order(meetupDate desc){_id, title, image, slug} [0..3]",
 });
-
 ---
 
-<Layout title="Welcome to Astro.">
-  <main class="layout">
+<Layout title='Sk8 N Meet Santana'>
+  <main class='layout'>
     <Hero />
-    <RecentFlyers meetups={meetups}/>
+    <RecentFlyers meetups={meetups} />
     <Summary />
     <Highlights />
   </main>
