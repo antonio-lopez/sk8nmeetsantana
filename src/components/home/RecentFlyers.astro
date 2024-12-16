@@ -1,0 +1,31 @@
+---
+import { type IMeetup } from "@/lib/interfaces";
+import ImageSrc from "../ui/ImageSrc.astro";
+import TypographyH2 from "../ui/TypographyH2.astro";
+
+interface Props {
+    meetups: IMeetup[];
+}
+
+const {meetups} = Astro.props;
+---
+<section class="py-10">
+<TypographyH2 title="Meet-ups" />
+    <div class='grid grid-cols-1 md:grid-cols-2 items-center justify-items-center gap-y-8 lg:mx-36'>
+        {meetups.map((meet: IMeetup) => (
+            <div class='md:w-[24rem] md:h-[24rem] w-full h-full'>
+              <ImageSrc 
+              smallImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/v${meet.image.version}/${meet.image.public_id}.webp`}
+              largeImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v${meet.image.version}/${meet.image.public_id}.webp`}
+              alt={meet.title}
+              height={meet.image.height}
+              width={meet.image.width}
+              loading='eager'
+              className='object-cover rounded-xl h-full w-full'
+              sizes='(max-width: 200px) 100vw, 45vw'  
+              />
+            </div>
+            ))}    
+    </div>
+</section>
+
