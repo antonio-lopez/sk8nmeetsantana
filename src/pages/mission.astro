@@ -1,0 +1,47 @@
+---
+import "@/styles/globals.css";
+import Layout from "@/layouts/Layout.astro";
+import TypographyH1 from "@/components/ui/TypographyH1.astro";
+import ImageSrc from "@/components/ui/ImageSrc.astro";
+import Divider from "@/components/ui/Divider.astro";
+---
+
+<Layout title='Mission'>
+  <section class='layout'>
+    <TypographyH1 title='Mission' />
+
+    <div class='flex justify-center'>
+      <ImageSrc
+        smallImg='https://res.cloudinary.com/dzhengjen/image/upload/v1705190380/assets/mission/20220918180724_IMG_0160-600w_qzmfod.webp'
+        largeImg='https://res.cloudinary.com/dzhengjen/image/upload/v1705190380/assets/mission/20220918180724_IMG_0160-1000w_av49mc.webp'
+        alt='sk8nmeet santana mission group cover'
+        loading='eager'
+        width='800'
+        height='550'
+        sizes='(max-width: 768px) 100vw, 45vw'
+      />
+    </div>
+
+    <div
+      class='flex flex-wrap items-center justify-center space-x-3 py-8 font-["Erica_One"] text-lg text-white md:text-3xl lg:py-14'
+    >
+      <span>Community</span>
+      <span>•</span>
+      <span>Friendship</span>
+      <span>•</span>
+      <span>Empowerment</span>
+      <span>•</span>
+      <span>Representation</span>
+    </div>
+
+    <Divider />
+
+    <p class='py-10 lg:px-36 lg:py-16 lg:text-xl'>
+      The first non-traditional skateboarding group in Santa Ana who hosts
+      monthly meet ups for all skill levels by creating community, friendship,
+      and lasting connections through skateboarding. We aim to provide thriving
+      safe spaces for skaters who identify as female, queer, trans and/or
+      nonbinary.
+    </p>
+  </section>
+</Layout>
