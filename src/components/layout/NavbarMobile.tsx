@@ -1,7 +1,7 @@
-import Icon from "../ui/icon.astro";
+// import Icon from "../ui/icon.astro";
 
-const Navbar = () => {
-  return <>mobile nav</>;
-};
+// const Navbar = () => {
+//   return <>mobile nav</>;
+// };
 
-export default Navbar;
+// export default Navbar;
