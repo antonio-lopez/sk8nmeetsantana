@@ -1,6 +1,6 @@
 ---
-import IconSrc from "../ui/IconSrc.astro";
 import ImageSrc from "../ui/ImageSrc.astro";
+import { Icon } from 'astro-icon/components'
 import type { NavbarLink, NavbarLinksWithSubLinks } from "../../lib/interfaces";
 
 const linksWithNoSublinks: Array<NavbarLink> = [
@@ -74,7 +74,7 @@ const linksWithSublinks: NavbarLinksWithSubLinks = [
         <ul class="flex space-x-4">
           <li>
             <a
-              class="hover:text-yellowGreen"
+              class="hover:text-primary"
               href={linksWithNoSublinks[0].route}
             >
               {linksWithNoSublinks[0].routeName}
@@ -109,27 +109,24 @@ const linksWithSublinks: NavbarLinksWithSubLinks = [
           aria-label="instagram profile link"
           target="_blank"
           rel="noopener noreferrer"
-          class="hover:text-primary"
         >
-          <IconSrc icon="instagram" />
+          <Icon name="instagram" class="h-6 w-6 hover:text-primary" />
         </a>
         <a
           href="https://www.tiktok.com/@sk8_n_meet_santana"
           aria-label="tiktok profile link"
           target="_blank"
           rel="noopener noreferrer"
-          class="hover:text-primary"
         >
-          <IconSrc icon="tiktok" />
+          <Icon name="tiktok" class="h-6 w-6 hover:text-primary" />
         </a>
         <a
           href="https://open.spotify.com/user/31ryffk7oynp2rjj5zf6zj7taj7u?si=3044d10a38b24ef8"
           aria-label="spotify profile link"
           target="_blank"
           rel="noopener noreferrer"
-          class="hover:text-primary"
         >
-          <IconSrc icon="spotify" />
+          <Icon name="spotify" class="h-6 w-6 hover:text-primary" />
         </a>
       </div>
     </div>

@@ -6,6 +6,7 @@ interface Props {
 const { title } = Astro.props;
 
 import Navbar from "@/components/layout/Navbar.astro";
+import Footer from "@/components/layout/Footer.astro";
 import "@fontsource/poppins";
 import "@fontsource/erica-one";
 ---
@@ -23,5 +24,6 @@ import "@fontsource/erica-one";
   <body>
     <Navbar />
     <slot />
+    <Footer />
   </body>
 </html>
