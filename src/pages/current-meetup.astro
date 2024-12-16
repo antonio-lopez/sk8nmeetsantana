@@ -1,0 +1,55 @@
+---
+import "@/styles/globals.css";
+import Layout from "../layouts/Layout.astro";
+import TypographyH1 from "@/components/ui/TypographyH1.astro";
+import Divider from "@/components/ui/Divider.astro";
+import HighlightImages from "@/components/ui/HighlightImages.astro";
+import ImageSrc from "@/components/ui/ImageSrc.astro";
+import { loadQuery } from "@/sanity/lib/load-query";
+import { type IMeetup } from "@/lib/interfaces";
+
+const { data: meetup } = await loadQuery<IMeetup>({
+  query:
+    "*[_type == 'meetup'] | order(meetupDate desc){_id, title, image, slug} [0]",
+});
+---
+
+<Layout title='Sk8 N Meet Santana | Current Meetup'>
+  <section class='layout'>
+    <TypographyH1 title='Our Next Meet Up' />
+
+    <div
+      class='mb-10 grid grid-cols-1 place-items-center gap-y-6 lg:grid-cols-[28rem,_1fr]'
+    >
+      <div class='h-full w-full md:h-[24rem] md:w-[24rem]'>
+        <ImageSrc
+          smallImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/v${meetup.image.version}/${meetup.image.public_id}.webp`}
+          largeImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v${meetup.image.version}/${meetup.image.public_id}.webp`}
+          alt={meetup.title}
+          height={meetup.image.height}
+          width={meetup.image.width}
+          loading='eager'
+          className='h-full w-full rounded-xl'
+          sizes='(max-width: 200px) 100vw, 45vw'
+        />
+      </div>
+      <div class='h-full w-full'>
+        {/* embed google calendar */}
+        <iframe
+          title='google calendar for meetup events'
+          src='https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%237CB342&ctz=America%2FLos_Angeles&title=Sk8%20N%20Meet%20Santana&src=c2s4bm1lZXRzYW50YW5hQGdtYWlsLmNvbQ&color=%23039BE5'
+          width='100%'
+          height='500'></iframe>
+      </div>
+      <p
+        class='font-["Erica_One"] text-3xl text-white md:text-4xl lg:col-start-2'
+      >
+        Save the date!
+      </p>
+    </div>
+
+    <Divider />
+
+    <HighlightImages />
+  </section>
+</Layout>
