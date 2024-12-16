@@ -1,6 +1,6 @@
 ---
 import Icon from "../ui/Icon.astro";
-import Image from "../ui/Image.astro";
+import ImageSrc from "../ui/ImageSrc.astro";
 import type { NavbarLink, NavbarLinksWithSubLinks } from "../../lib/interfaces";
 
 const linksWithNoSublinks: Array<NavbarLink> = [
@@ -57,7 +57,7 @@ const linksWithSublinks: NavbarLinksWithSubLinks = [
 <nav class="h-20 bg-[#16161a]">
   <div class="layout flex h-full items-center justify-between">
     <a href="/">
-      <Image
+      <ImageSrc
         smallImg="https://res.cloudinary.com/dzhengjen/image/upload/v1705266116/assets/logos/Sk8_n_meet-_Santa_Ana_log_text_only_white_sm-300w_yxuxy7.webp"
         largeImg="https://res.cloudinary.com/dzhengjen/image/upload/v1705266116/assets/logos/Sk8_n_meet-_Santa_Ana_log_text_only_white_sm-300w_yxuxy7.webp"
         alt="sk8nmeet santana logo"
