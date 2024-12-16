@@ -5,6 +5,7 @@ import Hero from "../components/home/Hero.astro"
 import RecentFlyers from "@/components/home/RecentFlyers.astro";
 import { loadQuery } from "@/sanity/lib/load-query";
 import { type IMeetup } from "@/lib/interfaces";
+import Summary from "@/components/home/Summary.astro";
 
 const { data: meetups } = await loadQuery<IMeetup[]>({
   query: "*[_type == 'meetup'] | order(meetupDate desc){_id, title, image, slug} [0..3]",
@@ -16,5 +17,6 @@ const { data: meetups } = await loadQuery<IMeetup[]>({
   <main class="layout">
     <Hero />
     <RecentFlyers meetups={meetups}/>
+    <Summary />
   </main>
 </Layout>

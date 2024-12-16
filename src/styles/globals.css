@@ -41,6 +41,9 @@
   a {
     font-family: "Erica One";
   }
+  p {
+    color: #C1C1C1
+  }
   .layout {
     max-width: 80rem;
     @apply mx-auto w-11/12;
