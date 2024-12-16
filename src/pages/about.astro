@@ -1,0 +1,131 @@
+---
+import "@/styles/globals.css";
+import Layout from "@/layouts/Layout.astro";
+import TypographyH1 from "@/components/ui/TypographyH1.astro";
+import ImageSrc from "@/components/ui/ImageSrc.astro";
+---
+
+<Layout title='About'>
+  <section class='layout'>
+    <TypographyH1 title='About' />
+
+    <!-- about bio -->
+    <div class='grid grid-cols-1 place-items-center gap-y-14 pb-10'>
+      <ImageSrc
+        smallImg='https://res.cloudinary.com/dzhengjen/image/upload/v1705168094/assets/bio-covers/IMG_0171-600w_yp7xpt.webp'
+        largeImg='https://res.cloudinary.com/dzhengjen/image/upload/v1705168095/assets/bio-covers/IMG_0171-1000w_h5ipp7.webp'
+        height='432'
+        width='648'
+        loading='eager'
+        sizes='(max-width: 768px) 100vw, 45vw'
+        alt='ashley and angela group cover'
+      />
+      <p class='mx-auto lg:px-14 lg:text-lg'>
+        As non-traditional skaters, we usually couldn’t see ourselves reflected
+        in skaters you would normally see at skateparks throughout Orange
+        County- specifically in Santa Ana. The original founder, Dorian Romero
+        took it upon herself to create a safe space for non-traditional skaters
+        by hosting monthly skate meet ups at local skate parks for those who
+        also have a love for skateboarding. The first meet up was held in March
+        of 2019 at a large parking lot behind a probation office. Angela Banda
+        attended the first meet up by discovering a flyer in the restroom of her
+        favorite local bar- Mission Bar. During the first meet up, Angela
+        connected with Dorian through their love of skateboarding and has since
+        become an involved member of the group. Ashley Singleton heard about Sk8
+        N Meet Santana by word of mouth while DJ’ing at El Indio Downtown Santa
+        Ana. Ashley had finally found a relatable group of folks to skate with
+        and attended her very first meet up in June of 2020 for the Black Lives
+        Matter Go Skate Day Protest in Downtown LA. In late 2020, Dorian
+        eventually handed off the organization to Angela and Ashley, and had
+        them take over as leaders of the group due to their dedication and
+        involvement. Since then, Sk8 N Meet Santana has grown by diversifying
+        their meet up locations to various skate parks in the LA and OC area.
+        The group has become a familiar face within the non-traditional skate
+        scene by way of collaborating with other non-traditional skate groups
+        throughout the SoCal area. Other involvement in the community includes
+        features in LA skate magazines (TRASH Mag and Bigfoot Magazine),
+        developing the very first Build-Your-Own-Skateboard Workshop for the
+        youth of Santa Ana, and attending Skate Like A Girl’s, W.O.F. (Wheels of
+        Fortune) in Seattle, WA.
+      </p>
+    </div>
+
+    <!-- founders bios -->
+    <div>
+      <div
+        class='my-14 grid grid-cols-1 justify-items-center gap-5 lg:grid-cols-[288px,_1fr]'
+      >
+        <ImageSrc
+          smallImg='https://res.cloudinary.com/dzhengjen/image/upload/v1705168093/assets/bio-covers/IMG_0073-600w_xbhdpo.webp'
+          largeImg='https://res.cloudinary.com/dzhengjen/image/upload/v1705168093/assets/bio-covers/IMG_0073-1000w_qy57hu.webp'
+          height='384'
+          width='300'
+          loading='lazy'
+          sizes='(max-width: 768px) 100vw, 45vw'
+          alt='angela biography cover'
+        />
+        <div class='w-full'>
+          <h2
+            class='mb-5 text-center text-3xl text-[#F3AECA] md:text-4xl lg:text-left'
+          >
+            Angela
+          </h2>
+          <p>
+            Angela is a recent graduate with a Bachelor’s degree in chemical
+            engineering. She is currently studying to get her Master’s in Food
+            Science. Angela enjoys dog sitting and spending quality time with
+            her friends. In her alone time she likes to get cozy and watch
+            movies or devote time to one of her hobbies. She became involved
+            with Sk8 N Meet Santana by attending the 1st meet up back in March
+            of 2019 when she was eager to find more friends to skate with in
+            Santa Ana. Fate led her to serendipitously find the flier for the
+            inaugural Sk8 N Meet Santana skate sesh in the restroom of a local
+            Santa Ana bar called Mission Bar. After attending several meet ups,
+            the organizer of the events, Dorian Romero, entrusted her to help
+            cohost the and eventually take on the role of social media outreach
+            and photo/video editing. Angela has shown great dedication to
+            maintaining a welcoming environment for the local and surrounding
+            communities of nontraditional skaters while representing female
+            skaters of Orange County. She takes great pride in being involved
+            and seeing the crew achieve new milestones in the skateboarding
+            community.
+          </p>
+        </div>
+      </div>
+      <div
+        class='my-14 grid grid-cols-1 justify-items-center gap-5 lg:grid-cols-[1fr,400px]'
+      >
+        <ImageSrc
+          smallImg='https://res.cloudinary.com/dzhengjen/image/upload/v1705168094/assets/bio-covers/IMG_0111-600w_jrti3s.webp'
+          largeImg='https://res.cloudinary.com/dzhengjen/image/upload/v1705168094/assets/bio-covers/IMG_0111-1000w_sspxab.webp'
+          height='316'
+          width='400'
+          loading='lazy'
+          sizes='(max-width: 768px) 100vw, 33vw'
+          alt='ashley biography cover'
+        />
+        <div class='lg:row-start-1'>
+          <h2
+            class='mb-5 text-center text-3xl text-[#F3AECA] md:text-4xl lg:text-left'
+          >
+            Ashley
+          </h2>
+          <p>
+            Ashley is an eclectic artist within multiple realms of the creative
+            scope. After graduating from FIDM (Fashion Institute of Design and
+            Merchandising) with a degree in Fashion Design, Ashley realized that
+            her passion for expressing her creativity gravitated more to graphic
+            design. She became involved with Sk8 N Meet Santana in June 2020,
+            after actively attending meet-ups and events hosted by the
+            organization. Her leadership role at Sk8 N Meet Santana consists of
+            designing flyers to the logo, branding and marketing, and taking
+            amature professional photos when needed. Other than designing and
+            skateboarding, Ashley is passionate about helping others in her
+            community and DJ’ing from her personal vinyl set at local bars when
+            her busy schedule allows it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
