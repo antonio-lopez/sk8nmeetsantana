@@ -1,0 +1,70 @@
+---
+import "@/styles/globals.css";
+import Layout from "../layouts/Layout.astro";
+import ImageSrc from "@/components/ui/ImageSrc.astro";
+import TypographyH1 from "@/components/ui/TypographyH1.astro";
+import { loadQuery } from "@/sanity/lib/load-query";
+import { type IMeetup, type ICloudinaryList } from "@/lib/interfaces";
+
+export const prerender = false;
+
+interface PaginationProps {
+  meetups: IMeetup[];
+  pagination: {
+    totalPageCount: number;
+    pageNumber: number;
+  };
+}
+
+const ITEMS_PER_PAGE = 8;
+const COLLECTION_QUERY = `*[_type == "meetup"] | order(meetupDate desc){_id, title, image, slug}`;
+const pageNumber = parseInt(Astro.url.searchParams.get("page") || "1");
+
+const { data: meetupData } = await loadQuery<PaginationProps>({
+  query: `{
+  "meetups": ${COLLECTION_QUERY} [($pageIndex * ${ITEMS_PER_PAGE})...($pageIndex + 1) * ${ITEMS_PER_PAGE}],
+  "pagination" : {
+        "totalPageCount" : count(${COLLECTION_QUERY}._id) / ${ITEMS_PER_PAGE},
+        "pageNumber": $pageIndex + 1,
+      }
+  }`,
+  params: {
+    pageIndex: pageNumber - 1,
+  },
+});
+
+// const MAX_PAGE_LIMIT = Math.ceil(meetupData.pagination.totalPageCount || 1);
+// console.log(pageNumber);
+// console.log(meetupData.meetups);
+---
+
+<Layout title='Sk8 N Meet Santana | Past Meet Ups'>
+  <section class='layout'>
+    <TypographyH1 title='Past Meet Ups' />
+    <div
+      class='mx-auto mb-16 grid grid-cols-1 items-center justify-items-center gap-8 md:grid-cols-2 lg:grid-cols-4'
+    >
+      {
+        meetupData.meetups.map(({ title, image }) => (
+          <div>
+            <div class='h-80 w-full md:max-h-[18rem] md:max-w-[18rem] lg:h-[18rem] lg:w-[18rem]'>
+              <ImageSrc
+                smallImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/v${image.version}/${image.public_id}.webp`}
+                largeImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v${image.version}/${image.public_id}.webp`}
+                alt={title}
+                height={image.height}
+                width={image.width}
+                loading='lazy'
+                className='rounded-xl w-full h-full'
+                sizes='(max-width: 200px) 100vw, 45vw'
+              />
+            </div>
+            <p class='pt-4 text-center font-["Erica_One"] text-2xl text-white'>
+              {title}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>
