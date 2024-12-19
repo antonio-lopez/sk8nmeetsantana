@@ -50,7 +50,7 @@ if (Number(pageNumber) < 1 || Number(pageNumber) > MAX_PAGE_LIMIT) {
     >
       {
         meetupData.meetups.map(({ title, image }) => (
-          <div>
+          <div class='flex h-full w-full flex-col items-center justify-center'>
             <div class='h-80 w-full md:max-h-[18rem] md:max-w-[18rem] lg:h-[18rem] lg:w-[18rem]'>
               <ImageSrc
                 smallImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/v${image.version}/${image.public_id}.webp`}
