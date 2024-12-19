@@ -1,0 +1,52 @@
+---
+import "@/styles/globals.css";
+import Layout from "@/layouts/Layout.astro";
+import TypographyH1 from "@/components/ui/TypographyH1.astro";
+import ImageSrc from "@/components/ui/ImageSrc.astro";
+import Divider from "@/components/ui/Divider.astro";
+import { loadQuery } from "../../sanity/lib/load-query";
+import { type IMeetup } from "@/lib/interfaces";
+
+export async function getStaticPaths() {
+  const { data: meetup } = await loadQuery<IMeetup[]>({
+    query: "*[_type == 'meetup']",
+  });
+
+  return meetup.map(({ slug }) => {
+    return {
+      params: {
+        slug: slug.current,
+      },
+    };
+  });
+}
+
+const { params } = Astro;
+
+const { data: meetup } = await loadQuery<IMeetup>({
+  query: "*[_type == 'meetup' && slug.current == $slug][0]",
+  params,
+});
+---
+
+<Layout title=`Sk8 N Meet Santana | ${meetup.title}`>
+  <section class='layout'>
+    <TypographyH1 title={meetup.title} />
+    <div class='mb-10 flex w-full items-center justify-center'>
+      <div class='h-full w-full md:h-[31rem] md:w-[31rem]'>
+        <ImageSrc
+          smallImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/v${meetup.image.version}/${meetup.image.public_id}.webp`}
+          largeImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v${meetup.image.version}/${meetup.image.public_id}.webp`}
+          alt={meetup.title}
+          height={meetup.image.height}
+          width={meetup.image.width}
+          loading='eager'
+          className='h-full w-full rounded-xl'
+          sizes='(max-width: 200px) 100vw, 45vw'
+        />
+      </div>
+    </div>
+
+    <Divider />
+  </section>
+</Layout>
