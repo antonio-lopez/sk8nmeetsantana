@@ -1,0 +1,30 @@
+---
+import "@/styles/globals.css";
+import Layout from "../layouts/Layout.astro";
+import ImageSrc from "@/components/ui/ImageSrc.astro";
+---
+
+<Layout title='Sk8 N Meet Santana'>
+  <div
+    class='layout flex min-h-screen flex-col items-center justify-center space-y-6 text-white'
+  >
+    <h1 class='text-3xl text-secondary md:text-4xl'>Page Not Found</h1>
+
+    <ImageSrc
+      smallImg='https://res.cloudinary.com/dzhengjen/image/upload/v1707407156/assets/logos/broken-skateboard-error-700w_j1tazz.webp'
+      largeImg='https://res.cloudinary.com/dzhengjen/image/upload/v1707407156/assets/logos/broken-skateboard-error-1000w_nyry5i.webp'
+      alt='error page'
+      height='700'
+      width='577'
+      loading={"eager"}
+      sizes='(max-width: 200px) 100vw, 45vw'
+    />
+
+    <div class='text-center'>
+      <p>Uh oh, we can&apos;t seem to find the page you&apos;re looking for.</p>
+      <p>Try going back to the previous page or back to home.</p>
+    </div>
+
+    <a class='text-lg hover:text-primary' href='/'> Back to home </a>
+  </div>
+</Layout>
