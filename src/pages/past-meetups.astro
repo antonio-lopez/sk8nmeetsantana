@@ -3,8 +3,9 @@ import "@/styles/globals.css";
 import Layout from "../layouts/Layout.astro";
 import ImageSrc from "@/components/ui/ImageSrc.astro";
 import TypographyH1 from "@/components/ui/TypographyH1.astro";
+import { Icon } from "astro-icon/components";
 import { loadQuery } from "@/sanity/lib/load-query";
-import { type IMeetup, type ICloudinaryList } from "@/lib/interfaces";
+import { type IMeetup } from "@/lib/interfaces";
 
 export const prerender = false;
 
@@ -19,6 +20,7 @@ interface PaginationProps {
 const ITEMS_PER_PAGE = 8;
 const COLLECTION_QUERY = `*[_type == "meetup"] | order(meetupDate desc){_id, title, image, slug}`;
 const pageNumber = parseInt(Astro.url.searchParams.get("page") || "1");
+const currentPath = Astro.url.pathname;
 
 const { data: meetupData } = await loadQuery<PaginationProps>({
   query: `{
@@ -33,9 +35,11 @@ const { data: meetupData } = await loadQuery<PaginationProps>({
   },
 });
 
-// const MAX_PAGE_LIMIT = Math.ceil(meetupData.pagination.totalPageCount || 1);
-// console.log(pageNumber);
-// console.log(meetupData.meetups);
+const MAX_PAGE_LIMIT = Math.ceil(meetupData.pagination.totalPageCount || 1);
+
+if (Number(pageNumber) < 1 || Number(pageNumber) > MAX_PAGE_LIMIT) {
+  return Astro.redirect("/404.astro");
+}
 ---
 
 <Layout title='Sk8 N Meet Santana | Past Meet Ups'>
@@ -65,6 +69,32 @@ const { data: meetupData } = await loadQuery<PaginationProps>({
           </div>
         ))
       }
+    </div>
+
+    <div
+      class='my-10 flex w-full items-center justify-between space-x-9 font-["Erica_One"] text-xl lg:my-20'
+    >
+      <a
+        href={`${pageNumber <= 1 ? "" : `${currentPath}?page=${pageNumber - 1}`}`}
+        aria-label='Go to previous page'
+        class={`flex items-center justify-center ${pageNumber <= 1 ? "pointer-events-none text-white/50 cursor-not-allowed" : "hover:text-primary"}`}
+        rel={pageNumber > 1 ? "prev" : null}
+      >
+        <Icon name='arrow-prev' class='mr-1 h-6 w-6' />
+        Previous
+      </a>
+      <span class='hidden w-full items-center justify-center md:flex'>
+        Page {pageNumber} of {MAX_PAGE_LIMIT}
+      </span>
+      <a
+        href={`${pageNumber >= MAX_PAGE_LIMIT ? "" : `${currentPath}?page=${pageNumber + 1}`}`}
+        aria-label='Go to next page'
+        class={`flex items-center justify-center ${pageNumber >= MAX_PAGE_LIMIT ? "pointer-events-none text-white/50 cursor-not-allowed" : "hover:text-primary"}`}
+        rel={pageNumber < MAX_PAGE_LIMIT ? "next" : null}
+      >
+        Next
+        <Icon name='arrow-forward' class='ml-1 h-6 w-6' />
+      </a>
     </div>
   </section>
 </Layout>
