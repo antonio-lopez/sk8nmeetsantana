@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import Layout from "@/layouts/Layout.astro";
 import TypographyH1 from "@/components/ui/TypographyH1.astro";
 import ImageSrc from "@/components/ui/ImageSrc.astro";
+import MeetupGallery from "@/components/islands/MeetupGallery";
 import Divider from "@/components/ui/Divider.astro";
 import { loadQuery } from "../../sanity/lib/load-query";
 import { type IMeetup } from "@/lib/interfaces";
@@ -27,6 +28,8 @@ const { data: meetup } = await loadQuery<IMeetup>({
   query: "*[_type == 'meetup' && slug.current == $slug][0]",
   params,
 });
+
+// const meetupPhotos = meetup.cloudinaryList
 ---
 
 <Layout title=`Sk8 N Meet Santana | ${meetup.title}`>
@@ -48,5 +51,13 @@ const { data: meetup } = await loadQuery<IMeetup>({
     </div>
 
     <Divider />
+
+    {
+      meetup.cloudinaryList ? (
+        <MeetupGallery cloudinaryList={meetup.cloudinaryList} client:idle />
+      ) : (
+        ""
+      )
+    }
   </section>
 </Layout>

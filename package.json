@@ -17,6 +17,7 @@
     "@fontsource/erica-one": "^5.1.0",
     "@fontsource/poppins": "^5.1.0",
     "@portabletext/types": "^2.0.13",
+    "@radix-ui/react-dialog": "^1.1.4",
     "@radix-ui/react-slot": "^1.1.0",
     "@sanity/astro": "^3.1.4",
     "@sanity/client": "^6.21.1",
