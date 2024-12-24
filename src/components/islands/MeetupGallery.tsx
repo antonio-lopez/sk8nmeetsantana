@@ -3,8 +3,7 @@ import type { ICloudinaryList } from "@/lib/interfaces";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/Dialog";
 import MeetupPhoto from "./MeetupPhoto";
 import { ChevronRight, ChevronLeft } from "lucide-react";
-import { Button } from "../ui/Button";
-
+import { Button } from "../ui/ShadCNButton";
 interface cloudinaryImages {
   cloudinaryList: ICloudinaryList[];
 }
