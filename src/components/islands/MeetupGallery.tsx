@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { ICloudinaryList } from "@/lib/interfaces";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/Dialog";
 import MeetupPhoto from "./MeetupPhoto";
-import { X } from "lucide-react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 import { Button } from "../ui/Button";
 
 interface cloudinaryImages {
@@ -53,44 +53,44 @@ const MeetupGallery = ({ cloudinaryList }: cloudinaryImages) => {
                   sizes="(max-width: 200px) 100vw, 45vw"
                 />
               </DialogTrigger>
-              <DialogContent className="h-[50%] max-w-[85%] p-2">
-                {/* <div className="flex h-full flex-col items-center justify-between"> */}
-                <MeetupPhoto
-                  key={_key}
-                  smallImg={selectedImage}
-                  largeImg={selectedImage}
-                  alt={public_id}
-                  height={height}
-                  width={width}
-                  loading={indx < 3 ? "eager" : "lazy"} // loads the first 3 images and lazy loads the rest
-                  className="object-contain lg:h-screen"
-                  sizes="(max-width: 200px) 100vw, 45vw"
-                />
+              <DialogContent>
+                <div className="flex flex-col items-center justify-between">
+                  <div className="h-full w-full md:h-[43.75rem]">
+                    <MeetupPhoto
+                      key={_key}
+                      smallImg={selectedImage}
+                      largeImg={selectedImage}
+                      alt={public_id}
+                      height={height}
+                      width={width}
+                      loading={indx < 3 ? "eager" : "lazy"} // loads the first 3 images and lazy loads the rest
+                      className="object-contain md:h-full md:w-full"
+                      sizes="(max-width: 200px) 100vw, 45vw"
+                    />
+                  </div>
 
-                <div className="flex items-center justify-between gap-2">
-                  {/* Previous button */}
-                  <Button
-                    variant="outline"
-                    className="cursor-pointer"
-                    onClick={handlePrev}
-                  >
-                    {/* <Icon icon='ooui:previous-ltr' width='14' height='14' /> */}
-                    {/* <X className="h-10 w-10" /> */}
-                    Prev
-                  </Button>
+                  <div className="mt-4 flex items-center justify-between gap-2">
+                    {/* Previous button */}
+                    <Button
+                      variant="outline"
+                      className="cursor-pointer"
+                      onClick={handlePrev}
+                    >
+                      <ChevronLeft className="h-10 w-10" />
+                      Prev
+                    </Button>
 
-                  {/* Next button */}
-                  <Button
-                    variant="outline"
-                    className="cursor-pointer"
-                    onClick={handleNext}
-                  >
-                    {/* <X className="h-10 w-10" /> */}
-                    Next
-                    {/* <Icon icon='ooui:previous-rtl' width='14' height='14' /> */}
-                  </Button>
+                    {/* Next button */}
+                    <Button
+                      variant="outline"
+                      className="cursor-pointer"
+                      onClick={handleNext}
+                    >
+                      Next
+                      <ChevronRight className="h-10 w-10" />
+                    </Button>
+                  </div>
                 </div>
-                {/* </div> */}
               </DialogContent>
             </Dialog>
           ),
