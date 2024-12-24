@@ -50,25 +50,26 @@ if (Number(pageNumber) < 1 || Number(pageNumber) > MAX_PAGE_LIMIT) {
     >
       {
         meetupData.meetups.map(({ title, image, slug }) => (
-          <a href={`/meetup/${slug.current}`} class='group'>
-            <div class='flex h-full w-full flex-col items-center justify-center'>
-              <div class='h-80 w-full md:max-h-[18rem] md:max-w-[18rem] lg:h-[18rem] lg:w-[18rem]'>
-                <ImageSrc
-                  smallImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/v${image.version}/${image.public_id}.webp`}
-                  largeImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v${image.version}/${image.public_id}.webp`}
-                  alt={title}
-                  height={image.height}
-                  width={image.width}
-                  loading='lazy'
-                  className='rounded-xl w-full h-full'
-                  sizes='(max-width: 200px) 100vw, 45vw'
-                />
-              </div>
-              <p class='pt-4 text-center font-["Erica_One"] text-2xl text-white group-hover:text-primary'>
-                {title}
-              </p>
-            </div>
-          </a>
+          <div class='group flex h-full w-full flex-col items-center justify-center'>
+            <a
+              href={`/meetup/${slug.current}`}
+              class='h-80 w-full md:max-h-[18rem] md:max-w-[18rem] lg:h-[18rem] lg:w-[18rem]'
+            >
+              <ImageSrc
+                smallImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/v${image.version}/${image.public_id}.webp`}
+                largeImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v${image.version}/${image.public_id}.webp`}
+                alt={title}
+                height={image.height}
+                width={image.width}
+                loading='lazy'
+                className='rounded-xl w-full h-full'
+                sizes='(max-width: 200px) 100vw, 45vw'
+              />
+            </a>
+            <p class='pt-4 text-center font-["Erica_One"] text-2xl text-white group-hover:text-primary'>
+              {title}
+            </p>
+          </div>
         ))
       }
     </div>

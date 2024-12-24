@@ -36,7 +36,7 @@ const { data: meetup } = await loadQuery<IMeetup>({
   <section class='layout'>
     <TypographyH1 title={meetup.title} />
     <div class='mb-10 flex w-full items-center justify-center'>
-      <div class='h-full w-full md:h-[31rem] md:w-[31rem]'>
+      <div class='h-80 w-full md:h-[31rem] md:w-[31rem]'>
         <ImageSrc
           smallImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/v${meetup.image.version}/${meetup.image.public_id}.webp`}
           largeImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v${meetup.image.version}/${meetup.image.public_id}.webp`}

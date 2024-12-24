@@ -19,9 +19,9 @@
     --accent-foreground: 0 0% 0%;
     --destructive: 0 100% 30%;
     --destructive-foreground: 336 5% 90%;
-    --border: 336 30% 50%;
+    --border: 220 8.9% 46.1%;
     --input: 336 30% 18%;
-    --ring: 336 74.2% 81.8%;
+    --ring: 220 8.9% 46.1%;
     --radius: 0.5rem;
   }
 }
@@ -42,7 +42,7 @@
     font-family: "Erica One";
   }
   p {
-    color: #C1C1C1
+    color: #c1c1c1;
   }
   .layout {
     max-width: 80rem;
