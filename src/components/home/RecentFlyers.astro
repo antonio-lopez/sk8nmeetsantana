@@ -4,17 +4,22 @@ import ImageSrc from "../ui/ImageSrc.astro";
 import TypographyH2 from "../ui/TypographyH2.astro";
 
 interface Props {
-    meetups: IMeetup[];
+  meetups: IMeetup[];
 }
 
-const {meetups} = Astro.props;
+const { meetups } = Astro.props;
 ---
-<section class="py-10">
-<TypographyH2 title="Meet-ups" />
-    <div class='grid grid-cols-1 md:grid-cols-2 items-center justify-items-center gap-12 lg:gap-8 lg:mx-36'>
-        {meetups.map((meet: IMeetup) => (
-            <div class='md:max-w-[24rem] md:max-h-[24rem] lg:w-[24rem] lg:h-[24rem] w-full h-80'>
-              <ImageSrc 
+
+<section class='py-10'>
+  <TypographyH2 title='Meet-ups' />
+  <div
+    class='grid grid-cols-1 items-center justify-items-center gap-12 md:grid-cols-2 lg:mx-36 lg:gap-8'
+  >
+    {
+      meetups.map((meet: IMeetup) => (
+        <a href={`/meetup/${meet.slug.current}`}>
+          <div class='h-80 w-full md:max-h-[24rem] md:max-w-[24rem] lg:h-[24rem] lg:w-[24rem]'>
+            <ImageSrc
               smallImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/v${meet.image.version}/${meet.image.public_id}.webp`}
               largeImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v${meet.image.version}/${meet.image.public_id}.webp`}
               alt={meet.title}
@@ -22,10 +27,11 @@ const {meetups} = Astro.props;
               width={meet.image.width}
               loading='eager'
               className='rounded-xl h-full w-full'
-              sizes='(max-width: 200px) 100vw, 45vw'  
-              />
-            </div>
-            ))}    
-    </div>
+              sizes='(max-width: 200px) 100vw, 45vw'
+            />
+          </div>
+        </a>
+      ))
+    }
+  </div>
 </section>
-

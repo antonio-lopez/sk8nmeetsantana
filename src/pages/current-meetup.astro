@@ -21,18 +21,20 @@ const { data: meetup } = await loadQuery<IMeetup>({
     <div
       class='mb-10 grid grid-cols-1 place-items-center gap-y-6 lg:grid-cols-[28rem,_1fr]'
     >
-      <div class='h-full w-full md:h-[24rem] md:w-[24rem]'>
-        <ImageSrc
-          smallImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/v${meetup.image.version}/${meetup.image.public_id}.webp`}
-          largeImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v${meetup.image.version}/${meetup.image.public_id}.webp`}
-          alt={meetup.title}
-          height={meetup.image.height}
-          width={meetup.image.width}
-          loading='eager'
-          className='h-full w-full rounded-xl'
-          sizes='(max-width: 200px) 100vw, 45vw'
-        />
-      </div>
+      <a href={`/meetup/${meetup.slug.current}`}>
+        <div class='h-full w-full md:h-[24rem] md:w-[24rem]'>
+          <ImageSrc
+            smallImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/v${meetup.image.version}/${meetup.image.public_id}.webp`}
+            largeImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v${meetup.image.version}/${meetup.image.public_id}.webp`}
+            alt={meetup.title}
+            height={meetup.image.height}
+            width={meetup.image.width}
+            loading='eager'
+            className='h-full w-full rounded-xl'
+            sizes='(max-width: 200px) 100vw, 45vw'
+          />
+        </div>
+      </a>
       <div class='h-full w-full'>
         {/* embed google calendar */}
         <iframe
