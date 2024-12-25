@@ -52,7 +52,7 @@ const MeetupGallery = ({ cloudinaryList }: cloudinaryImages) => {
                   sizes="(max-width: 200px) 100vw, 45vw"
                 />
               </DialogTrigger>
-              <DialogContent>
+              <DialogContent onOpenAutoFocus={(e) => e.preventDefault()}>
                 <div className="flex flex-col items-center justify-between">
                   <div className="h-full w-full md:h-[43.75rem]">
                     <MeetupPhoto
@@ -70,21 +70,13 @@ const MeetupGallery = ({ cloudinaryList }: cloudinaryImages) => {
 
                   <div className="mt-4 flex items-center justify-between gap-2">
                     {/* Previous button */}
-                    <Button
-                      variant="outline"
-                      className="cursor-pointer"
-                      onClick={handlePrev}
-                    >
+                    <Button variant="outline" onClick={handlePrev}>
                       <ChevronLeft className="h-10 w-10" />
                       Prev
                     </Button>
 
                     {/* Next button */}
-                    <Button
-                      variant="outline"
-                      className="cursor-pointer"
-                      onClick={handleNext}
-                    >
+                    <Button variant="outline" onClick={handleNext}>
                       Next
                       <ChevronRight className="h-10 w-10" />
                     </Button>

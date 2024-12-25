@@ -36,12 +36,12 @@ const MobileNav = () => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button size="icon" variant="ghost">
+        <Button size="icon" variant="mobile">
           <LucideMenu />
           <span className="sr-only">Toggle navigation menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="top">
+      <SheetContent onOpenAutoFocus={(e) => e.preventDefault()} side="top">
         <ul className="mt-8 grid gap-6 p-6 text-center text-3xl text-primary">
           {mobileLinks.map((link) => {
             return (

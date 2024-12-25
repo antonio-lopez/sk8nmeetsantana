@@ -70,7 +70,9 @@ const linksWithSublinks: NavbarLinksWithSubLinks = [
     </a>
 
     <!-- mobile navbar -->
-    <MobileNav client:media='(max-width: 900px)' />
+    <div class='lg:hidden'>
+      <MobileNav client:media='(max-width: 900px)' />
+    </div>
 
     <!-- page links -->
     <div class='hidden items-center space-x-10 lg:flex'>
