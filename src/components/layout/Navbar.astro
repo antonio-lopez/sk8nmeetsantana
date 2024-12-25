@@ -2,6 +2,7 @@
 import ImageSrc from "../ui/ImageSrc.astro";
 import { Icon } from "astro-icon/components";
 import type { NavbarLink, NavbarLinksWithSubLinks } from "../../lib/interfaces";
+import MobileNav from "../islands/MobileNav";
 
 const linksWithNoSublinks: Array<NavbarLink> = [
   {
@@ -67,6 +68,9 @@ const linksWithSublinks: NavbarLinksWithSubLinks = [
         sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
       />
     </a>
+
+    <!-- mobile navbar -->
+    <MobileNav client:media='(max-width: 900px)' />
 
     <!-- page links -->
     <div class='hidden items-center space-x-10 lg:flex'>
