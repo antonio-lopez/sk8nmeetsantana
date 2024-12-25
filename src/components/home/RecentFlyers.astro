@@ -21,7 +21,6 @@ const { meetups } = Astro.props;
           href={`/meetup/${meet.slug.current}`}
           class='h-80 w-full md:max-h-[24rem] md:max-w-[24rem] lg:h-[24rem] lg:w-[24rem]'
         >
-          {/* <div class='h-80 w-full md:max-h-[24rem] md:max-w-[24rem] lg:h-[24rem] lg:w-[24rem]'> */}
           <ImageSrc
             smallImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/v${meet.image.version}/${meet.image.public_id}.webp`}
             largeImg={`https://res.cloudinary.com/${import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v${meet.image.version}/${meet.image.public_id}.webp`}
@@ -32,7 +31,6 @@ const { meetups } = Astro.props;
             className='rounded-xl h-full w-full'
             sizes='(max-width: 200px) 100vw, 45vw'
           />
-          {/* </div> */}
         </a>
       ))
     }
