@@ -40,9 +40,20 @@ const MAX_PAGE_LIMIT = Math.ceil(meetupData.pagination.totalPageCount || 1);
 if (Number(pageNumber) < 1 || Number(pageNumber) > MAX_PAGE_LIMIT) {
   return Astro.redirect("/404.astro");
 }
+
+const title = "Sk8 N Meet Santana | Past Meetups";
+const description =
+  "The first non-traditional skateboarding group in Santa Ana who hosts monthly meet ups and aim to provide a thriving safe space for skaters who identify as female, queer, trans and/or nonbinary.";
+const basicUrl = "https://sk8nmeetsantana.netlify.app/past-meetups";
+const canonical = "https://sk8nmeetsantana.netlify.app/past-meetups";
 ---
 
-<Layout title='Sk8 N Meet Santana | Past Meet Ups'>
+<Layout
+  title={title}
+  description={description}
+  basicUrl={basicUrl}
+  canonical={canonical}
+>
   <section class='layout'>
     <TypographyH1 title='Past Meet Ups' />
     <div

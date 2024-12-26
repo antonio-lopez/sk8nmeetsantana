@@ -1,9 +1,13 @@
 ---
+import { SEO } from "astro-seo";
 interface Props {
   title: string;
+  description: string;
+  basicUrl: string;
+  canonical: string;
 }
 
-const { title } = Astro.props;
+const { title, description, basicUrl, canonical } = Astro.props;
 
 import Navbar from "@/components/layout/Navbar.astro";
 import Footer from "@/components/layout/Footer.astro";
@@ -15,9 +19,39 @@ import "@fontsource/erica-one";
 <html lang='en'>
   <head>
     <meta charset='UTF-8' />
-    <meta name='description' content='Astro description' />
     <meta name='viewport' content='width=device-width' />
-    <meta name='generator' content={Astro.generator} />
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonical}
+      openGraph={{
+        basic: {
+          title: title,
+          type: "website",
+          url: basicUrl,
+          image:
+            "https://res.cloudinary.com/dzhengjen/image/upload/v1707594527/assets/logos/og-sk8nmeet_px9f4p.png",
+        },
+        image: {
+          url: "https://res.cloudinary.com/dzhengjen/image/upload/v1707594527/assets/logos/og-sk8nmeet_px9f4p.png",
+          type: "image/png",
+          width: 1600,
+          height: 630,
+          alt: "Sk8NMeet Santana Logo",
+        },
+        optional: {
+          description: description,
+        },
+      }}
+      twitter={{
+        title: title,
+        description: description,
+        image:
+          "https://res.cloudinary.com/dzhengjen/image/upload/v1707594527/assets/logos/og-sk8nmeet_px9f4p.png",
+        imageAlt: "Sk8NMeet Santana Logo",
+        card: "summary_large_image",
+      }}
+    />
     <link
       rel='icon'
       type='image/png'
@@ -33,7 +67,6 @@ import "@fontsource/erica-one";
     />
     <meta name='apple-mobile-web-app-title' content='Sk8NMeet Santana' />
     <link rel='manifest' href='/favicon/site.webmanifest' />
-    <title>{title}</title>
   </head>
   <body>
     <Navbar />

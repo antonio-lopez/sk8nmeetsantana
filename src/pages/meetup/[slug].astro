@@ -29,10 +29,18 @@ const { data: meetup } = await loadQuery<IMeetup>({
   params,
 });
 
-// const meetupPhotos = meetup.cloudinaryList
+const title = `Sk8 N Meet Santana | ${meetup.title}`;
+const description = `Explore the thrilling moments captured during the skate meetup held on ${meetup.title}, featuring skaters of all skill levels enjoying the atmosphere.`;
+const basicUrl = `https://sk8nmeetsantana.netlify.app/meetup/${meetup.slug.current}`;
+const canonical = `https://sk8nmeetsantana.netlify.app/meetup/${meetup.slug.current}`;
 ---
 
-<Layout title=`Sk8 N Meet Santana | ${meetup.title}`>
+<Layout
+  title={title}
+  description={description}
+  basicUrl={basicUrl}
+  canonical={canonical}
+>
   <section class='layout'>
     <TypographyH1 title={meetup.title} />
     <div class='mb-10 flex w-full items-center justify-center'>

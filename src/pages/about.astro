@@ -3,9 +3,20 @@ import "@/styles/globals.css";
 import Layout from "@/layouts/Layout.astro";
 import TypographyH1 from "@/components/ui/TypographyH1.astro";
 import ImageSrc from "@/components/ui/ImageSrc.astro";
+
+const title = "Sk8 N Meet Santana | About";
+const description =
+  "The first non-traditional skateboarding group in Santa Ana who hosts monthly meet ups and aim to provide a thriving safe space for skaters who identify as female, queer, trans and/or nonbinary.";
+const basicUrl = "https://sk8nmeetsantana.netlify.app/about";
+const canonical = "https://sk8nmeetsantana.netlify.app/about";
 ---
 
-<Layout title='Sk8 N Meet Santana | About'>
+<Layout
+  title={title}
+  description={description}
+  basicUrl={basicUrl}
+  canonical={canonical}
+>
   <section class='layout'>
     <TypographyH1 title='About' />
 
