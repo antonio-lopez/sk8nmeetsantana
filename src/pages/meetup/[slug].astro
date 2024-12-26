@@ -31,8 +31,8 @@ const { data: meetup } = await loadQuery<IMeetup>({
 
 const title = `Sk8 N Meet Santana | ${meetup.title}`;
 const description = `Explore the thrilling moments captured during the skate meetup held on ${meetup.title}, featuring skaters of all skill levels enjoying the atmosphere.`;
-const basicUrl = `https://sk8nmeetsantana.netlify.app/meetup/${meetup.slug.current}`;
-const canonical = `https://sk8nmeetsantana.netlify.app/meetup/${meetup.slug.current}`;
+const basicUrl = `https://sk8nmeetsantana.com/meetup/${meetup.slug.current}`;
+const canonical = `https://sk8nmeetsantana.com/meetup/${meetup.slug.current}`;
 ---
 
 <Layout
