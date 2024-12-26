@@ -9,8 +9,11 @@ import netlify from "@astrojs/netlify";
 
 import icon from "astro-icon";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
+  site: "https://sk8nmeetsantana.com/",
   output: "hybrid",
   adapter: netlify({ imageCDN: false }),
   image: {
@@ -29,5 +32,6 @@ export default defineConfig({
     }),
     react(),
     icon(),
+    sitemap(),
   ],
 });
